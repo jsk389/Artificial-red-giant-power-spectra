@@ -8,7 +8,7 @@ from scipy.interpolate import interp1d
 from scipy.special import lpmv as legendre
 import glob
 
-from build_distributions import Dists
+#from build_distributions import Dists
 
 class Background:
     """

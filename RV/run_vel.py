@@ -13,12 +13,20 @@ import os
 from scipy import integrate
 
 if __name__=="__main__":
+    loc='./Artificial_Spectra/'
+    if not os.path.isdir(loc):
+        os.makedirs(loc)
 
+    folder=loc+'Subgiant_numax1000/'
+    if not os.path.isdir(folder):
+        os.makedirs(folder)
+    star='Subgiant'
+    
     # Access to kic number, kepler magnitude, teff and dnu
     # Cadence
-    dt = 270.0
+    dt = 200.0
     # Length of observation
-    T = 30.0 * 86400.0
+    T = 100 * 86400.0
     # Nyquist
     nyq = 1.0 / (2.0 * dt) * 1e6
     # Frequency array
@@ -28,11 +36,11 @@ if __name__=="__main__":
     # Kepler mag (This functions as kepmag for Kepler and I-band mag for TESS)
     kmag = 5.0
     # Effective temperature
-    Teff = 4792
+    Teff = 5000
     # numax
-    numax = 224
+    numax = 500
     # dpi1
-    dpi = 88.0
+    dpi = 100
     # dnu
     dnu = 0.276 * numax ** 0.754
     # Henv - not calculated in code - easier to give it here using scaling relation - only needed for oscillations, not background
@@ -43,6 +51,11 @@ if __name__=="__main__":
     gsplit = 0.3
     R = 0.0
 
+    numax=1150
+    dnu=0.251*numax**0.751
+    Teff=5702
+    dpi=500
+
 
     # Angle of inclination
     inc = 90.0
@@ -51,16 +64,16 @@ if __name__=="__main__":
     n = []
 
     global_params = np.array(['', dnu, numax, dpi, epsg, gsplit, 
-                              R, inc, q, Teff, Henv, kmag]).astype(str))
+                              R, inc, q, Teff, Henv, kmag]).astype(str)
     # Set up class for scaling relations
     print('Creating background')
-    backg = Background(freq, nyq, dnu[i], numax[i], dt, kmag, Teff[i], mission)
+    backg = Background(freq, nyq, dnu, numax, dt, kmag, Teff, mission)
     model = backg()
     backg_model = model.copy()
     freq_0 = []
     print('l=0')
-    l_0 = RadialModes(freq, model, Teff[i], kmag, dnu[i], numax[i], dpi[i], epsg, q, gsplit, R, \
-                  inc, dt, T, mission, Henv[i])
+    l_0 = RadialModes(freq, model, Teff, kmag, dnu, numax, dpi, epsg, q, gsplit, R, \
+                  inc, dt, T, mission, Henv)
     l_0.create_radial_modes(freq_0)
     # Don't need to read in l=1 freqs as should be the same provided parameters
     # such as dpi, q etc. are saved
@@ -94,20 +107,21 @@ if __name__=="__main__":
     # l=2
     l2_freqs = np.array(l_2.freq_2).flatten()
     l2_amp = np.array(l_2.amp_2).flatten()
+	
+    pl.plot(freq,power)
+    #pl.plot(freq,model)
+    pl.show()
 
-    np.savetxt(str(fit)+'_ps.pow', np.c_[freq, power])
-    np.savetxt(str(fit)+'_model.pow', np.c_[freq, model])
 
+    np.savetxt(folder+str(star)+'_ps.pow', np.c_[freq, power])
+    np.savetxt(folder+str(star)+'_model.pow', np.c_[freq, model])
 
-
-    np.savetxt(str(fit)+'_global.txt', global_params, fmt="%s")#, header=str(global_params_header))
+    np.savetxt(folder+str(star)+'_global.txt', global_params, fmt="%s")#, header=str(global_params_header))
     # Save radial mode parameters
-    np.savetxt(str(fit)+'_radial.txt', np.c_[l0_freqs, l0_amp, l0_width])
+    np.savetxt(folder+str(star)+'_radial.txt', np.c_[l0_freqs, l0_amp, l0_width])
     # Save l=1 mode parameters
-    np.savetxt(str(fit)+'_l1.txt', np.c_[l1_freqs, l1_heights, l1_width, l1_split, l1_angle, l1_backg])
+    np.savetxt(folder+str(star)+'_l1.txt', np.c_[l1_freqs, l1_heights, l1_width, l1_split, l1_angle, l1_backg])
     # Save l=2 mode parameters
-    np.savetxt(str(fit)+'_l2.txt', np.c_[l2_freqs, l2_amp])
-    np.savetxt(str(fit)+'.txt', np.c_[freq, power])
-    np.savetxt(str(fit)+'_model.txt', np.c_[freq, model])
+    np.savetxt(folder+str(star)+'_l2.txt', np.c_[l2_freqs, l2_amp])
 
     

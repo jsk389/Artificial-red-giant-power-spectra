@@ -13,6 +13,14 @@ from scipy import integrate
 
 
 if __name__=="__main__":
+    loc='./Artificial_Spectra/'
+    if not os.path.isdir(loc):
+        os.makedirs(loc)
+
+    folder=loc+'Subgiant_numax1000/'
+    if not os.path.isdir(folder):
+        os.makedirs(folder)
+    star='Subgiant'
 
     # Let's take the approximate values for KOI-3890
     mission = 'Kepler'
@@ -23,10 +31,15 @@ if __name__=="__main__":
     gsplit = 0.4
     R = 0.0
     inc = 90.0
-    q = 0.7
-
+    q = 0.01#coupling
     Teff = 4840
     kmag = 12.44
+
+    numax=1150
+    dnu=0.251*numax**0.751
+    Teff=5702
+    dpi=500
+
     # If Henv is not given then it will be calculated automatically
 #    Henv = 135.0
 
@@ -34,14 +47,11 @@ if __name__=="__main__":
                             'numax', 'dpi', 'epsg', 'gsplit',
                             'R', 'inc', 'q', 'Teff', 'kmag']
 
-    if mission == 'Kepler':
-        global_params = [0, dnu, numax, dpi, epsg, gsplit, 
-                         R, inc, q, Teff, kmag]
-    elif mission == 'TESS':
-        global_params = [1, dnu, numax, dpi, epsg, gsplit, 
+    global_params = [str(mission), dnu, numax, dpi, epsg, gsplit, 
                          R, inc, q, Teff, kmag]
     # Cadence
     dt = 29.4*60.0
+    dt= 58.85
     # Length of timeseries
     T = 4.0 * 365.25 * 86400.0
     # Nyquist
@@ -76,6 +86,7 @@ if __name__=="__main__":
     # Save l=0,1,2 parameters
     l0_freqs = np.array(l_0.freq_0).flatten()
     l0_amp = np.array(l_0.amp_0).flatten()
+    l0_width = np.array(l_0.width_0).flatten()
     # l=1
     l1_freqs = [item for sublist in l_1.mixed_full for item in sublist]
     l1_width = l_1.dipole_width
@@ -87,28 +98,38 @@ if __name__=="__main__":
     # l=2
     l2_freqs = np.array(l_2.freq_2).flatten()
     l2_amp = np.array(l_2.amp_2).flatten()
+    ###############################################################################
+    import pyfits
+    from os.path import expanduser
+    home=expanduser('~')
+    i=home+'/Dropbox/PhD/Python_Codes/kplr006442183_kasoc-psd_slc_v1.fits'
 
-    np.savetxt('KOI-3890_spec.power', np.c_[freq, power])
-    pl.plot(f, p, 'k')
-    pl.plot(f, model, 'r')
+    data=pyfits.open(i)
+    kic=data[0].header['KEPLERID']
+    obs=data[0].header['OBSMODE']
+    f,p=data[1].data['FREQUENCY'],data[1].data['PSD']
+
+    pl.figure()
+    pl.plot(freq, power, 'k')
+    pl.vlines(l2_freqs,0,500,linestyle='--',color='b',alpha=0.5)
+    pl.vlines(l1_freqs,0,500,linestyle=':',color='r',alpha=0.5)
+    pl.vlines(l0_freqs,0,500,linestyle='--',color='g',alpha=0.5)
+    
+    pl.figure()
+    pl.plot(f,p, 'r',alpha=0.8)
     #pl.xscale('log')
     #pl.yscale('log')
     pl.show()
 
-  
-    directory = 'Red_split_spectra/'
-    # Save data
-    np.savetxt(directory+str(i)+'_global.txt', global_params, header=str(global_params_header))
-    ## Save radial mode parameters
-    np.savetxt(directory+str(i)+'_radial.txt', np.c_[l0_freqs, l0_amp])
-    ## Save l=1 mode parameters
-    np.savetxt(directory+str(i)+'_l1.txt', np.c_[l1_freqs, l1_heights, l1_width, l1_split, l1_angle, l1_backg])
-    ## Save l=2 mode parameters
-    np.savetxt(directory+str(i)+'_l2.txt', np.c_[l2_freqs, l2_amp])
-    # Save out power spectrum    
-    np.savetxt(directory+str(i)+'.txt', np.c_[freq, power])
-    # Save out model
-    np.savetxt(directory+str(i)+'_model.txt', np.c_[freq, model])
+    np.savetxt(folder+str(star)+'_ps.pow', np.c_[freq, power])
+    np.savetxt(folder+str(star)+'_model.pow', np.c_[freq, model])
 
+    np.savetxt(folder+str(star)+'_global.txt', global_params, fmt="%s")#, header=str(global_params_header))
+    # Save radial mode parameters
+    np.savetxt(folder+str(star)+'_radial.txt', np.c_[l0_freqs, l0_amp, l0_width])
+    # Save l=1 mode parameters
+    np.savetxt(folder+str(star)+'_l1.txt', np.c_[l1_freqs, l1_heights, l1_width, l1_split, l1_angle, l1_backg])
+    # Save l=2 mode parameters
+    np.savetxt(folder+str(star)+'_l2.txt', np.c_[l2_freqs, l2_amp])
 
 
