@@ -1,0 +1,7 @@
+scalings module
+===============
+
+.. automodule:: scalings
+    :members:
+    :undoc-members:
+    :show-inheritance:

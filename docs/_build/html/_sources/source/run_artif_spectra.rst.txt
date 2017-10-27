@@ -1,0 +1,7 @@
+run\_artif\_spectra module
+==========================
+
+.. automodule:: run_artif_spectra
+    :members:
+    :undoc-members:
+    :show-inheritance:

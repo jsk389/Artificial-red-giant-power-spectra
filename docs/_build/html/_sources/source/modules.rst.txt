@@ -1,0 +1,12 @@
+Photometry
+==========
+
+.. toctree::
+   :maxdepth: 4
+
+   background
+   dipole_modes
+   l_2_modes
+   radial_modes
+   run_artif_spectra
+   scalings
