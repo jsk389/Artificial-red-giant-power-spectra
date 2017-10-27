@@ -57,17 +57,16 @@ class Background(object):
     def calc_timescales(self):
         """
         Use scaling relations from Kallinger et al. 2014 to determine
-        background parameters
+        the timescales of the granulation components.
         """
         b1 = 0.317 * self.numax ** 0.970
         b2 = 0.948 * self.numax ** 0.992
-        print("B1, B2: ", b1, b2)
         return b1, b2
 
     def calc_amplitudes(self):
         """
         Use scaling relations from Kallinger et al. 2014 to determine
-        background parameters
+        the amplitudes of the granulation components.
         """
         if self.mission == 'Kepler':
             a1 = 3382 * self.numax ** -0.609
@@ -80,7 +79,11 @@ class Background(object):
 
     def harvey_profile(self, params):
         """
-        Use the profile as set out in Campante et al. 2015
+        Use the profile as set out in Campante et al. (2015)
+        
+        :params params
+            The vector containing background parameters for the star.
+
         """
         return ((2.0*np.sqrt(2.0)/np.pi) * ((params[0]**2.0) / \
                       params[1])) / \
@@ -88,7 +91,7 @@ class Background(object):
 
     def eta_sq(self):
         """
-        Compute sinc^2 modulation from sampling
+        Compute sinc^2 modulation from sampling.
         """
         return np.sinc(self.f/(2.0*self.nyq))**2.0
 
