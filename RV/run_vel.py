@@ -23,10 +23,10 @@ if __name__=="__main__":
     star='Subgiant'
     
     # Access to kic number, kepler magnitude, teff and dnu
-    # Cadence
+    # Cadence you want the final timeseries to be in
     dt = 200.0
-    # Length of observation
-    T = 100 * 86400.0
+    # Length of observation-
+    T = 4*365 * 86400.0
     # Nyquist
     nyq = 1.0 / (2.0 * dt) * 1e6
     # Frequency array
@@ -36,26 +36,20 @@ if __name__=="__main__":
     # Kepler mag (This functions as kepmag for Kepler and I-band mag for TESS)
     kmag = 5.0
     # Effective temperature
-    Teff = 5000
+    Teff = 5800
     # numax
-    numax = 500
+    numax = 1150
     # dpi1
-    dpi = 100
+    dpi = 500
     # dnu
     dnu = 0.276 * numax ** 0.754
     # Henv - not calculated in code - easier to give it here using scaling relation - only needed for oscillations, not background
     Henv = 2.03e7 * numax ** -2.38
     # Extra mixed mode parameters
     epsg = 0.0
-    q = 0.17
+    q = 0.02
     gsplit = 0.3
     R = 0.0
-
-    numax=1150
-    dnu=0.251*numax**0.751
-    Teff=5702
-    dpi=500
-
 
     # Angle of inclination
     inc = 90.0
@@ -108,9 +102,9 @@ if __name__=="__main__":
     l2_freqs = np.array(l_2.freq_2).flatten()
     l2_amp = np.array(l_2.amp_2).flatten()
 	
-    pl.plot(freq,power)
+    #pl.plot(freq,power)
     #pl.plot(freq,model)
-    pl.show()
+    #pl.show()
 
 
     np.savetxt(folder+str(star)+'_ps.pow', np.c_[freq, power])
