@@ -10,9 +10,34 @@ import glob
 
 #from build_distributions import Dists
 
-class Background:
+class Background(object):
     """
-    Class to compute background model for given mission (TESS or Kepler)
+    Class to compute background model for given mission (TESS or Kepler).
+
+    :param _freq:
+        The frequency array to be used in the construction of the background.
+
+    :param _nyq:
+        Nyquist frequency corresponding to the observations.
+
+    :param _dnu:
+        Large frequency separation of the star to be simulated.
+
+    :param _numax:
+        Frequency of maximum oscillation power of the star to be simulated.
+
+    :param _dt:
+        Cadence of the observations.
+
+    :param _kmag:
+        The magnitude of the star. This functions as Kepler magnitude for
+        simulations of Kepler data and I-band magnitude for simulations of
+        TESS data.
+
+    :param mission:
+        The mission that the simulated data is supposed to mimic. The option
+        is either Kepler or TESS.
+
     """
 
     def __init__(self, _freq, _nyq, _dnu, _numax, _dt, _kmag,
