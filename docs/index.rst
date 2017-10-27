@@ -10,9 +10,6 @@ Welcome to Artificial Power Spectra's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-.. automodule:: Photometry
-
-
 Indices and tables
 ==================
 
