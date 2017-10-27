@@ -10,6 +10,10 @@ Welcome to Artificial Power Spectra's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+.. automodule:: corrupt_spectra
+   :members:
+   
+
 Indices and tables
 ==================
 
