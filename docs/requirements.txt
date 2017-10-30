@@ -1,4 +1,6 @@
 gatspy
+glob
+kplr
 matplotlib
 numpy
 scipy
