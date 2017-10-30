@@ -84,7 +84,7 @@ class Background(object):
         :params params: The vector containing background parameters for the star.
         :type params: array
 
-        :math:`\frac{\left(2\sqrt(2)/\pi\right)\left(a^{2}/b\right)}{1 + \left(\nu/b\right)^{4}}
+        :math:`\frac{\left(2\sqrt(2)/\pi\right)\left(a^{2}/b\right)}{1 + \left(\nu/b\right)^{4}}`
 
         """
         return ((2.0*np.sqrt(2.0)/np.pi) * ((params[0]**2.0) / \
