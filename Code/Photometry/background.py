@@ -61,9 +61,12 @@ class Background(object):
         return b1, b2
 
     def calc_amplitudes(self):
-        """
+        r"""
         Use scaling relations from Kallinger et al. (2014) to determine
         the amplitudes of the granulation components.
+
+        :math:`a_{1} = 3382\nu_{\mathrm{max}}^{-0.609}`
+
         """
         if self.mission == 'Kepler':
             a1 = 3382 * self.numax ** -0.609
@@ -78,8 +81,9 @@ class Background(object):
         """
         Use the profile as set out in Campante et al. (2015)
         
-        :params params
-            The vector containing background parameters for the star.
+        :params params: The vector containing background parameters for the star.
+        :type params: array
+
 
         """
         return ((2.0*np.sqrt(2.0)/np.pi) * ((params[0]**2.0) / \
