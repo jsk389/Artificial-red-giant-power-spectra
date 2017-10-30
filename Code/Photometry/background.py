@@ -14,29 +14,26 @@ class Background(object):
     """
     Class to compute background model for given mission (TESS or Kepler).
 
-    :param _freq:
-        The frequency array to be used in the construction of the background.
+    :param _freq: The frequency array to be used in the construction of the background.
+    :type _freq: array
 
-    :param _nyq:
-        Nyquist frequency corresponding to the observations.
+    :param _nyq: Nyquist frequency corresponding to the observations.
+    :type _nyq: float
 
-    :param _dnu:
-        Large frequency separation of the star to be simulated.
+    :param _dnu: Large frequency separation of the star to be simulated.
+    :type _dnu: float
 
-    :param _numax:
-        Frequency of maximum oscillation power of the star to be simulated.
+    :param _numax: Frequency of maximum oscillation power of the star to be simulated.
+    :type _numax: float
 
-    :param _dt:
-        Cadence of the observations.
+    :param _dt: Cadence of the observations.
+    :type _dt: float
 
-    :param _kmag:
-        The magnitude of the star. This functions as Kepler magnitude for
-        simulations of Kepler data and I-band magnitude for simulations of
-        TESS data.
+    :param _kmag: The magnitude of the star. This functions as Kepler magnitude for simulations of Kepler data and I-band magnitude for simulations of TESS data.
+    :type _kmag: float
 
-    :param mission:
-        The mission that the simulated data is supposed to mimic. The option
-        is either Kepler or TESS.
+    :param mission: The mission that the simulated data is supposed to mimic. The option is either Kepler or TESS.
+    :type mission: str
 
     """
 
@@ -56,7 +53,7 @@ class Background(object):
 
     def calc_timescales(self):
         """
-        Use scaling relations from Kallinger et al. 2014 to determine
+        Use scaling relations from Kallinger et al. (2014) to determine
         the timescales of the granulation components.
         """
         b1 = 0.317 * self.numax ** 0.970
@@ -65,7 +62,7 @@ class Background(object):
 
     def calc_amplitudes(self):
         """
-        Use scaling relations from Kallinger et al. 2014 to determine
+        Use scaling relations from Kallinger et al. (2014) to determine
         the amplitudes of the granulation components.
         """
         if self.mission == 'Kepler':

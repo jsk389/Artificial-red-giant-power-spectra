@@ -239,6 +239,67 @@ given in … (NEED REFERENCE!)</p>
 
 </dd></dl>
 
+<dl class="class">
+<dt id="background.Background">
+<em class="property">class </em><code class="descclassname">background.</code><code class="descname">Background</code><span class="sig-paren">(</span><em>_freq</em>, <em>_nyq</em>, <em>_dnu</em>, <em>_numax</em>, <em>_dt</em>, <em>_kmag</em>, <em>mission</em><span class="sig-paren">)</span><a class="headerlink" href="#background.Background" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class to compute background model for given mission (TESS or Kepler).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>_freq</strong> (<em>array</em>) – The frequency array to be used in the construction of the background.</li>
+<li><strong>_nyq</strong> (<em>float</em>) – Nyquist frequency corresponding to the observations.</li>
+<li><strong>_dnu</strong> (<em>float</em>) – Large frequency separation of the star to be simulated.</li>
+<li><strong>_numax</strong> (<em>float</em>) – Frequency of maximum oscillation power of the star to be simulated.</li>
+<li><strong>_dt</strong> (<em>float</em>) – Cadence of the observations.</li>
+<li><strong>_kmag</strong> (<em>float</em>) – The magnitude of the star. This functions as Kepler magnitude for simulations of Kepler data and I-band magnitude for simulations of TESS data.</li>
+<li><strong>mission</strong> (<em>str</em>) – The mission that the simulated data is supposed to mimic. The option is either Kepler or TESS.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="background.Background.calc_amplitudes">
+<code class="descname">calc_amplitudes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#background.Background.calc_amplitudes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use scaling relations from Kallinger et al. (2014) to determine
+the amplitudes of the granulation components.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="background.Background.calc_timescales">
+<code class="descname">calc_timescales</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#background.Background.calc_timescales" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use scaling relations from Kallinger et al. (2014) to determine
+the timescales of the granulation components.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="background.Background.eta_sq">
+<code class="descname">eta_sq</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#background.Background.eta_sq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute sinc^2 modulation from sampling.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="background.Background.harvey_profile">
+<code class="descname">harvey_profile</code><span class="sig-paren">(</span><em>params</em><span class="sig-paren">)</span><a class="headerlink" href="#background.Background.harvey_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use the profile as set out in Campante et al. (2015)</p>
+<dl class="docutils">
+<dt>:params params</dt>
+<dd>The vector containing background parameters for the star.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="background.Background.shot_noise">
+<code class="descname">shot_noise</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#background.Background.shot_noise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use results from Jenkins (2010) for long cadence shot noise
+values. Converted into ppm^2uHz^-1 using equation in
+Chaplin (2011).</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
