@@ -6,17 +6,17 @@
 Welcome to Artificial Power Spectra's documentation!
 ====================================================
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+.. ..toctree::
+..   :maxdepth: 2
+..   :caption: Contents:
 
 .. automodule:: corrupt_spectra
    :members:
    
 
-Indices and tables
-==================
+.. Indices and tables
+.. ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. * :ref:`genindex`
+.. * :ref:`modindex`
+.. * :ref:`search`
