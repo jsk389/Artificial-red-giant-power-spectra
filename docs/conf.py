@@ -19,7 +19,8 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../Code/'))
+#sys.path.insert(0, os.path.abspath('../Code/'))
+sys.path.append(os.path.abspath('../Code/'))
 import sphinx_rtd_theme
 
 # -- General configuration ------------------------------------------------
@@ -35,7 +36,7 @@ extensions = [
 	"sphinx.ext.autodoc",
 	"sphinx.ext.napoleon",
 	"sphinx.ext.mathjax",
-		]
+]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
