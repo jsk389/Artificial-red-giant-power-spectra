@@ -6,12 +6,11 @@
 Welcome to Artificial Power Spectra's documentation!
 ====================================================
 
-.. ..toctree::
-..   :maxdepth: 2
-..   :caption: Contents:
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
 
-.. automodule:: corrupt_spectra
-   :members:
+   api
    
 
 .. Indices and tables

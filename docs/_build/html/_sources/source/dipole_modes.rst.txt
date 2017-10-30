@@ -1,7 +1,0 @@
-dipole\_modes module
-====================
-
-.. automodule:: dipole_modes
-    :members:
-    :undoc-members:
-    :show-inheritance:

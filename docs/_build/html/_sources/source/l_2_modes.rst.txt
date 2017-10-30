@@ -1,7 +1,0 @@
-l\_2\_modes module
-==================
-
-.. automodule:: l_2_modes
-    :members:
-    :undoc-members:
-    :show-inheritance:

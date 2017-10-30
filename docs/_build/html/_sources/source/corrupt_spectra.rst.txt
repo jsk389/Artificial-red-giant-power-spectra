@@ -1,7 +1,0 @@
-corrupt\_spectra module
-=======================
-
-.. automodule:: corrupt_spectra
-    :members:
-    :undoc-members:
-    :show-inheritance:
