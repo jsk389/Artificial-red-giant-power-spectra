@@ -155,10 +155,89 @@
 <h1>Welcome to Artificial Power Spectra’s documentation!<a class="headerlink" href="#welcome-to-artificial-power-spectra-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<span class="target" id="module-corrupt_spectra"></span><dl class="function">
-<dt id="corrupt_spectra.med_filt">
-<code class="descclassname">corrupt_spectra.</code><code class="descname">med_filt</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>dt=4.0</em><span class="sig-paren">)</span><a class="headerlink" href="#corrupt_spectra.med_filt" title="Permalink to this definition">¶</a></dt>
-<dd><p>De-trend a light curve using a windowed median.</p>
+<span class="target" id="module-corrupt_spectra"></span><dl class="class">
+<dt id="corrupt_spectra.CorruptSpectra">
+<em class="property">class </em><code class="descclassname">corrupt_spectra.</code><code class="descname">CorruptSpectra</code><span class="sig-paren">(</span><em>_freq</em>, <em>_power</em>, <em>_obs_length</em>, <em>observing_window=None</em>, <em>corrupt=True</em><span class="sig-paren">)</span><a class="headerlink" href="#corrupt_spectra.CorruptSpectra" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class designed to generate and corrupt power spectra/timeseries</p>
+<dl class="method">
+<dt id="corrupt_spectra.CorruptSpectra.compute_power_spectrum">
+<code class="descname">compute_power_spectrum</code><span class="sig-paren">(</span><em>time</em>, <em>flux</em><span class="sig-paren">)</span><a class="headerlink" href="#corrupt_spectra.CorruptSpectra.compute_power_spectrum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the power spectrum of a given timeseries</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>time</strong> (<em>array</em>) – Array containing the time array</li>
+<li><strong>flux</strong> (<em>array</em>) – Array containing flux values</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="corrupt_spectra.CorruptSpectra.create_window">
+<code class="descname">create_window</code><span class="sig-paren">(</span><em>time</em>, <em>observing_window</em><span class="sig-paren">)</span><a class="headerlink" href="#corrupt_spectra.CorruptSpectra.create_window" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a window function that mimicks an observing window every 24 hours</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>time</strong> (<em>array</em>) – Time array to create window from</li>
+<li><strong>observing_window</strong> (<em>float</em>) – Length of observing window (in hours)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="corrupt_spectra.CorruptSpectra.generate_timeseries">
+<code class="descname">generate_timeseries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#corrupt_spectra.CorruptSpectra.generate_timeseries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a timeseries from the power spectrum following the method
+given in … (NEED REFERENCE!)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="corrupt_spectra.CorruptSpectra.normalise_timeseries">
+<code class="descname">normalise_timeseries</code><span class="sig-paren">(</span><em>time</em>, <em>flux</em><span class="sig-paren">)</span><a class="headerlink" href="#corrupt_spectra.CorruptSpectra.normalise_timeseries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalise the timeseries according to Parseval’s theorem</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>time</strong> (<em>array</em>) – Array containing the time array</li>
+<li><strong>flux</strong> (<em>array</em>) – Array containing flux values to normalise</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="corrupt_spectra.CorruptSpectra.rebin">
+<code class="descname">rebin</code><span class="sig-paren">(</span><em>x</em>, <em>r</em><span class="sig-paren">)</span><a class="headerlink" href="#corrupt_spectra.CorruptSpectra.rebin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rebin an array x using a window of length r</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> (<em>array</em>) – Array to be rebinned</li>
+<li><strong>r</strong> (<em>int</em>) – Number of bins to rebin over</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </dd></dl>
 
 </div>
