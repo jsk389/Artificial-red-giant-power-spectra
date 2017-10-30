@@ -65,7 +65,7 @@ class Background(object):
         Use scaling relations from Kallinger et al. (2014) to determine
         the amplitudes of the granulation components.
 
-        :math:`a_{1} = 3382\nu_{\mathrm{max}}^{-0.609}`
+        :math:`a_{1} = a_{2} = 3382\nu_{\mathrm{max}}^{-0.609}`
 
         """
         if self.mission == 'Kepler':
@@ -78,12 +78,13 @@ class Background(object):
         return a1, a2
 
     def harvey_profile(self, params):
-        """
+        r"""
         Use the profile as set out in Campante et al. (2015)
         
         :params params: The vector containing background parameters for the star.
         :type params: array
 
+        :math:`\frac{\left(2\sqrt(2)/\pi\right)\left(a^{2}/b\right)}{1 + \left(\nu/b\right)^{4}}
 
         """
         return ((2.0*np.sqrt(2.0)/np.pi) * ((params[0]**2.0) / \
