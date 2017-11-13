@@ -16,7 +16,47 @@ class Scalings(object):
     def __init__(self, _Teff, _kmag, _dnu, _numax, _dpi, _epsg, _q, \
                       _gsplit, _R, _inc, _dt, _T, mission, H_env):
         """
-        Initialise class for calculating scaling relation
+        Class to compute asteroseismic parameters based on scaling relations.
+
+        :param _Teff: The effective temperature of the star.
+        :type _Teff: float
+
+        :param _kmag: The magnitude of the star. This functions as Kepler magnitude for simulations of Kepler data and I-band magnitude for simulations of TESS data.
+        :type _kmag: float
+
+        :param _dnu: Large frequency separation of the star to be simulated.
+        :type _dnu: float
+
+        :param _numax: Frequency of maximum oscillation power of the star to be simulated.
+        :type _numax: float
+
+        :param _dpi: Period spacing of the l=1 mixed modes.
+        :type _dpi: float
+
+        :param _epsg: A phase term accounting for behaviour near the turning points of the modes.
+        :type _epsg: float
+
+        :param _q: Coupling factor.
+        :type _q: float
+
+        :param _gsplit: Rotational splitting of thhe underlying g-modes.
+        :type _gsplit: float
+
+        :param _R: Ratio of the average envelope rotation rate to the average core rotation rate.
+        :type _R: float
+
+        :param _inc: Inclination angle of the star (degrees).
+        :type _inc: float
+
+        :param _dt: Cadence of the instrument (seconds).
+        :type _dt: float
+
+        :param mission: The mission that the simulated data is supposed to mimic. The option is either Kepler or TESS.
+        :type mission: str
+
+        :param Henv: Height of the oscillation envelope.
+        :type Henv: float
+
         """
         # Cadence for Kepler long cadence observations
         self.dt = _dt #29.4*60.0

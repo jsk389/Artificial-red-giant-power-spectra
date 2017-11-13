@@ -46,9 +46,8 @@ class Background(object):
         self.dnu = _dnu
         self.numax = _numax
         self.mission = mission
-        self.kmag = _kmag # This functions as kepmag for Kepler and
-                          # I-band mag for TESS
-        self.dt = _dt # cadence
+        self.kmag = _kmag 
+        self.dt = _dt
         self.bw = self.f[1]-self.f[0]
 
     def calc_timescales(self):
@@ -78,13 +77,13 @@ class Background(object):
         return a1, a2
 
     def harvey_profile(self, params):
-        r"""
+        """
         Use the profile as set out in Campante et al. (2015)
         
-        :params params: The vector containing background parameters for the star.
+        :param params: The vector containing background parameters for the star.
         :type params: array
-
-        :math:`\frac{\left(2\sqrt(2)/\pi\right)\left(a^{2}/b\right)}{1 + \left(\nu/b\right)^{4}}`
+        
+        :math:`\\frac{\\left(2\\sqrt(2)/\\pi\\right)\\left(a^{2}/b\\right)}{1 + \\left(\\nu/b\\right)^{4}}`
 
         """
         return ((2.0*np.sqrt(2.0)/np.pi) * ((params[0]**2.0) / \
