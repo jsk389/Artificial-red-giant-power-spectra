@@ -306,6 +306,77 @@ Chaplin (2011).</p>
 
 </dd></dl>
 
+<dl class="class">
+<dt id="scalings.Scalings">
+<em class="property">class </em><code class="descclassname">scalings.</code><code class="descname">Scalings</code><span class="sig-paren">(</span><em>_Teff</em>, <em>_kmag</em>, <em>_dnu</em>, <em>_numax</em>, <em>_dpi</em>, <em>_epsg</em>, <em>_q</em>, <em>_gsplit</em>, <em>_R</em>, <em>_inc</em>, <em>_dt</em>, <em>_T</em>, <em>mission</em>, <em>H_env</em><span class="sig-paren">)</span><a class="headerlink" href="#scalings.Scalings" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="scalings.Scalings.a0">
+<code class="descname">a0</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scalings.Scalings.a0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an interpolation function to obtain radial mode amplitude
+at any given frequency</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scalings.Scalings.amax_scaling">
+<code class="descname">amax_scaling</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scalings.Scalings.amax_scaling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use H_env scaling relation from Mosser et al. 2012 and convert
+to radial mode amplitude at nu_max</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scalings.Scalings.calc_nuwidth">
+<code class="descname">calc_nuwidth</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scalings.Scalings.calc_nuwidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate width of oscillation envelope from Mosser et al. 2012</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scalings.Scalings.d01_scaling">
+<code class="descname">d01_scaling</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scalings.Scalings.d01_scaling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use scaling relation from Corsaro et al. 2012
+d01 = dnu/2 + (0.109 +/- 0.012)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scalings.Scalings.d02_scaling">
+<code class="descname">d02_scaling</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scalings.Scalings.d02_scaling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use scaling relation from Corsaro et al. 2012
+d02 = 0.112 +/- 0.016</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scalings.Scalings.epsilon">
+<code class="descname">epsilon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scalings.Scalings.epsilon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use scaling relation from Corsaro et al. 2012 for epsilon</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scalings.Scalings.gamma_0">
+<code class="descname">gamma_0</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scalings.Scalings.gamma_0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use scaling relation from Corsaro et al. 2012
+gamma = gamma0*exp[(Teff-5777)/T0]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scalings.Scalings.mass_scaling">
+<code class="descname">mass_scaling</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scalings.Scalings.mass_scaling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use scaling relation for mass as fn as numax, dnu and Teff</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scalings.Scalings.n_env">
+<code class="descname">n_env</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scalings.Scalings.n_env" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use scaling relation from Mosser et al. 2011 for number
+of radial orders with detectable amplitudes</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scalings.Scalings.radius_scaling">
+<code class="descname">radius_scaling</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scalings.Scalings.radius_scaling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use scaling relation for radius as fn of numax dnu and temp</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

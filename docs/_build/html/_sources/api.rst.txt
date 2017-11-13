@@ -11,4 +11,5 @@ This page details the methods provided by the ``corrupt_spectra`` class.
 .. autoclass:: background.Background
    :members:
 
-
+.. autoclass:: scalings.Scalings
+   :members:
